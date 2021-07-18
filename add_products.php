@@ -39,14 +39,7 @@
 				$_SESSION['ErrorMessage'] = "Only alphabets is allowed for the product name field";
 			}
 			else{
-				
-				$sql = "SELECT * FROM tbluser WHERE username = '$username'";
-				$query_result = mysqli_query($conn, $sql);
-				$result = mysqli_num_rows($query_result);
-				if($result > 0){
-					$_SESSION['ErrorMessage'] = "Username is currently not available";
-				}
-				else{
+			
 					$sql = "INSERT INTO tblproduct (name,price,category,description,username,date,time,picture) VALUES('$name','$price','$category','$description','{$_SESSION['username']}','$date','$time','$image_name')";
 						$query_result = mysqli_query($conn, $sql);
 					if($query_result){
@@ -55,7 +48,6 @@
 					else{
 						$_SESSION['SuccessMessage'] = "Failed to add product";
 					}
-				}
 				
 			}
 		}
